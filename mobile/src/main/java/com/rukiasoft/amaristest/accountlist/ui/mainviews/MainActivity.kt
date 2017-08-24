@@ -1,11 +1,13 @@
-package com.rukiasoft.amaristest
+package com.rukiasoft.amaristest.accountlist.ui.mainviews
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import com.rukiasoft.amaristest.R
+import com.rukiasoft.newrukiapics.ui.activities.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity(), AccountsView {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
