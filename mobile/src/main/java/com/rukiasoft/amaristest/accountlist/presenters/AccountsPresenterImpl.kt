@@ -9,4 +9,9 @@ import javax.inject.Inject
 @CustomScopes.ActivityScope
 class AccountsPresenterImpl @Inject constructor(): AccountsPresenter {
 
+
+    override fun loadAccounts() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }
