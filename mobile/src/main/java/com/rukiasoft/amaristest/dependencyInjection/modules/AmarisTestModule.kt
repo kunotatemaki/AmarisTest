@@ -1,6 +1,7 @@
 package com.rukiasoft.amaristest.dependencyInjection.modules
 
 import android.content.Context
+import com.rukiasoft.amaristest.AmarisApplication
 import com.rukiasoft.amaristest.resources.ResourcesManager
 import com.rukiasoft.amaristest.resources.ResourcesManagerImplAndroid
 import javax.inject.Singleton
@@ -13,19 +14,19 @@ import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 /**
  * Created by Roll on 24/8/17.
  */
-class AmarisTestModule(private val application: PayconiqApplication) {
+class AmarisTestModule(private val application: AmarisApplication) {
 
 
     @Provides
     @Singleton
-    fun providesPayconiqApplication(): PayconiqApplication {
+    fun providesPayconiqApplication(): AmarisApplication {
         return application
     }
 
     @Provides
     @Singleton
     fun providesContext(): Context {
-        return application.getApplicationContext()
+        return application.applicationContext
     }
 
     @Provides
