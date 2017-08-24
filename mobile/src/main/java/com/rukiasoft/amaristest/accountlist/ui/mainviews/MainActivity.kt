@@ -2,7 +2,6 @@ package com.rukiasoft.amaristest.accountlist.ui.mainviews
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
 import com.rukiasoft.amaristest.R
 import com.rukiasoft.amaristest.accountlist.ui.lifecycleobservers.AccountsLifecycleObserver
 import com.rukiasoft.amaristest.model.Account
@@ -14,16 +13,12 @@ class MainActivity : BaseActivity(), AccountsView {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
-                message.setText(R.string.title_home)
+            R.id.navigation_all_accounts -> {
+                message.setText(R.string.title_all_accounts)
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
+            R.id.navigation_visible_accounts -> {
+                message.setText(R.string.title_visible_accounts)
                 return@OnNavigationItemSelectedListener true
             }
         }

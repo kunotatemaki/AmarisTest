@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Amaris Test</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_all_accounts">All accounts</string>
+    <string name="title_visible_accounts">Visible accounts</string>
 </resources>
