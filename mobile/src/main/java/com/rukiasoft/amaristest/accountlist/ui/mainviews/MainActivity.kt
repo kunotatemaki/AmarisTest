@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import com.rukiasoft.amaristest.R
 import com.rukiasoft.amaristest.accountlist.presenters.AccountsPresenter
+import com.rukiasoft.amaristest.accountlist.ui.adapters.AccountsAdapter
 import com.rukiasoft.amaristest.accountlist.ui.lifecycleobservers.AccountsLifecycleObserver
 import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.model.CustomLiveData
@@ -22,6 +23,9 @@ class MainActivity : BaseActivity(), AccountsView {
 
     @Inject
     protected lateinit var observer: AccountsLifecycleObserver
+
+    @Inject
+    protected lateinit var adapter: AccountsAdapter
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
