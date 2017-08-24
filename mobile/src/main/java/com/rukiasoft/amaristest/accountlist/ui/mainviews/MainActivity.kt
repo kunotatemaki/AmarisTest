@@ -3,13 +3,25 @@ package com.rukiasoft.amaristest.accountlist.ui.mainviews
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import com.rukiasoft.amaristest.R
+import com.rukiasoft.amaristest.accountlist.presenters.AccountsPresenter
 import com.rukiasoft.amaristest.accountlist.ui.lifecycleobservers.AccountsLifecycleObserver
 import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.model.CustomLiveData
+import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import com.rukiasoft.newrukiapics.ui.activities.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : BaseActivity(), AccountsView {
+
+    @Inject
+    protected lateinit var presenter: AccountsPresenter
+
+    @Inject
+    protected lateinit var log: LoggerHelper
+
+    @Inject
+    protected lateinit var observer: AccountsLifecycleObserver
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
