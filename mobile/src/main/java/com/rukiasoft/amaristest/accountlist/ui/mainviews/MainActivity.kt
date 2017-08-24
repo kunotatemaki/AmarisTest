@@ -2,10 +2,12 @@ package com.rukiasoft.amaristest.accountlist.ui.mainviews
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import com.rukiasoft.amaristest.AmarisApplication
 import com.rukiasoft.amaristest.R
 import com.rukiasoft.amaristest.accountlist.presenters.AccountsPresenter
 import com.rukiasoft.amaristest.accountlist.ui.adapters.AccountsAdapter
 import com.rukiasoft.amaristest.accountlist.ui.lifecycleobservers.AccountsLifecycleObserver
+import com.rukiasoft.amaristest.dependencyInjection.modules.AccountsModule
 import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.model.CustomLiveData
 import com.rukiasoft.amaristest.utils.logger.LoggerHelper
@@ -43,6 +45,8 @@ class MainActivity : BaseActivity(), AccountsView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //inject everything
+        (application as AmarisApplication).mComponent.getAccountsSubcomponent(AccountsModule(this)).inject(this)
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
