@@ -15,11 +15,16 @@ import javax.inject.Inject
  */
 class ResourcesManagerImplAndroid @Inject constructor(): ResourcesManager {
 
+
     @Inject
     lateinit var log: LoggerHelper
 
     @Inject
     lateinit var context: Context
+
+    override fun getString(resId: Int): String {
+        return context.getString(resId)
+    }
 
     override fun loadAccounts(): List<Account> {
         log.d(this, "leo las cuentas desde la clase resources")
