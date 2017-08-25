@@ -17,6 +17,12 @@ import com.rukiasoft.newrukiapics.ui.activities.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 import android.arch.lifecycle.LifecycleObserver
+import android.databinding.DataBindingUtil
+import android.support.v7.widget.RecyclerView
+import com.rukiasoft.amaristest.databinding.ActivityMainBinding
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+
 
 
 
@@ -34,14 +40,16 @@ class MainActivity : BaseActivity(), AccountsView {
     @Inject
     protected lateinit var adapter: AccountsAdapter
 
+    private lateinit var mRecyclerView: RecyclerView
+
+    private lateinit var mBinding: ActivityMainBinding
+
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_all_accounts -> {
-                message.setText(R.string.title_all_accounts)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_visible_accounts -> {
-                message.setText(R.string.title_visible_accounts)
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -52,15 +60,32 @@ class MainActivity : BaseActivity(), AccountsView {
         super.onCreate(savedInstanceState)
         //inject everything
         (application as AmarisApplication).mComponent.getAccountsSubcomponent(AccountsModule(this)).inject(this)
-        setContentView(R.layout.activity_main)
+
+        //binding
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         log.d(this, "oncreate activity")
+
+        //set the mAdapter for the recycler view
+        mRecyclerView = mBinding.accountsRecyclerView
+
+        // use a linear layout manager
+        val mLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        mRecyclerView.layoutManager = mLayoutManager
+        mRecyclerView.adapter = adapter
+        //add a divider decorator
+        val dividerItemDecoration = DividerItemDecoration(mRecyclerView.context,
+                DividerItemDecoration.VERTICAL)
+        mRecyclerView.addItemDecoration(dividerItemDecoration)
 
     }
 
     override fun setAccountsInView(accounts: List<Account>) {
         log.d(this, "pongo las cuentas en la vista")
+        adapter.accounts.clear()
+        adapter.accounts.addAll(accounts)
+        adapter.notifyDataSetChanged()
     }
 
     override fun addLifecycleObserver(observer: AccountsLifecycleObserver) {

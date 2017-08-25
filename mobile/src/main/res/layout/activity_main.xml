@@ -2,12 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <import type="com.rukiasoft.amaristest.accountlist.presenters.AccountsPresenter"/>
-        <variable
-            name="presenter"
-            type="AccountsPresenter"/>
-    </data>
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
@@ -17,9 +12,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/accounts_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:clipToPadding="false"
-            android:scrollbarStyle="insideInset"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toTopOf="@+id/navigation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -2,4 +2,9 @@
     <string name="app_name">Amaris Test</string>
     <string name="title_all_accounts">All accounts</string>
     <string name="title_visible_accounts">Visible accounts</string>
+    <string name="currency">€</string>
+    <string name="name">Name:</string>
+    <string name="alias">Alias:</string>
+    <string name="iban">Iban:</string>
+    <string name="balance">Balance:</string>
 </resources>

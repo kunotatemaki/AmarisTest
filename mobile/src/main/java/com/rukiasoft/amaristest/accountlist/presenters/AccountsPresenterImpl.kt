@@ -37,6 +37,10 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
 
     }
 
+    override fun getResourceManager(): ResourcesManager{
+        return resourcesManager;
+    }
+
     //region LIVEDATA OBSERVER INTERFACE
     override fun handleChangesInObservedAccounts(accounts: MutableList<Account>) {
         log.d(this, "me entero del cambio")
