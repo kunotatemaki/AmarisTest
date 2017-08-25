@@ -5,11 +5,9 @@ import com.rukiasoft.amaristest.accountlist.ui.mainviews.AccountsView
 import com.rukiasoft.amaristest.dependencyInjection.scopes.CustomScopes
 import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.resources.ResourcesManager
+import com.rukiasoft.amaristest.utils.AmarisConstants
 import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import javax.inject.Inject
-import android.provider.ContactsContract.DisplayNameSources.NICKNAME
-import android.content.Intent
-import android.view.View
 
 
 /**
@@ -41,7 +39,7 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
     }
 
     override fun getResourceManager(): ResourcesManager{
-        return resourcesManager;
+        return resourcesManager
     }
 
     override fun accountClicked(account: Account) {
@@ -50,10 +48,29 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
 
     }
 
+    override fun showDataInMainView(accounts: MutableList<Account>){
+        val filteredAccounts: MutableList<Account> = mutableListOf()
+        when(mView.getSelectedType()){
+            AmarisConstants.Type.ALL->{
+                log.d(this, "show all")
+                filteredAccounts.addAll(accounts)}
+            AmarisConstants.Type.VISIBLE -> {
+                log.d(this, "show only visibles")
+                accounts.forEach {
+                    if(it.isVisible){
+                        filteredAccounts.add(it)
+                    }
+                }
+            }
+        }
+        mView.setAccountsInView(filteredAccounts)
+    }
+
     //region LIVEDATA OBSERVER INTERFACE
     override fun handleChangesInObservedAccounts(accounts: MutableList<Account>) {
         log.d(this, "me entero del cambio")
-        mView.setAccountsInView(accounts)
+        showDataInMainView(accounts)
+
     }
     //endregion
 

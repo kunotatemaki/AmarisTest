@@ -84,22 +84,7 @@ class MainActivity : BaseActivity(), AccountsView {
     override fun setAccountsInView(accounts: List<Account>) {
         log.d(this, "pongo las cuentas en la vista")
         adapter.accounts.clear()
-        val filteredAccounts: MutableList<Account> = mutableListOf()
-        when(getSelectedType()){
-            AmarisConstants.Type.ALL->{
-                log.d(this, "show all")
-                filteredAccounts.addAll(accounts)}
-            AmarisConstants.Type.VISIBLE -> {
-                log.d(this, "show only visibles")
-                accounts.forEach {
-                    if(it.isVisible){
-                        filteredAccounts.add(it)
-                    }
-                }
-            }
-
-        }
-        adapter.accounts.addAll(filteredAccounts)
+        adapter.accounts.addAll(accounts)
         adapter.notifyDataSetChanged()
     }
 
