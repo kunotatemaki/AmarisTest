@@ -1,7 +1,9 @@
 package com.rukiasoft.amaristest.accountlist.presenters
 
+import com.rukiasoft.amaristest.accountlist.ui.livedataobservers.LivedataObserver
 import com.rukiasoft.amaristest.accountlist.ui.mainviews.AccountsView
 import com.rukiasoft.amaristest.dependencyInjection.scopes.CustomScopes
+import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.resources.ResourcesManager
 import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import javax.inject.Inject
@@ -10,7 +12,7 @@ import javax.inject.Inject
  * Created by Roll on 24/8/17.
  */
 @CustomScopes.ActivityScope
-class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : AccountsPresenter {
+class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : AccountsPresenter, LivedataObserver {
 
     @Inject
     protected lateinit var resourcesManager: ResourcesManager
@@ -25,5 +27,12 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
         mView.getLiveAccounts().setLivedataValue(accountList)
         log.d(this, "metido")
     }
+
+    //region LIVEDATA OBSERVER INTERFACE
+    override fun handleChangesInObservedAccounts(accounts: MutableList<Account>) {
+        log.d(this, "me entero del cambio")
+        mView.setAccountsInView(accounts)
+    }
+    //endregion
 
 }

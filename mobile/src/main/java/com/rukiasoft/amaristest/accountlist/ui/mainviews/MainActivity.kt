@@ -16,6 +16,9 @@ import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import com.rukiasoft.newrukiapics.ui.activities.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
+import android.arch.lifecycle.LifecycleObserver
+
+
 
 class MainActivity : BaseActivity(), AccountsView {
 
@@ -52,16 +55,18 @@ class MainActivity : BaseActivity(), AccountsView {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        log.d(this, "oncreate activity")
 
-        presenter.loadAccounts()
     }
 
     override fun setAccountsInView(accounts: List<Account>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        log.d(this, "pongo las cuentas en la vista")
     }
 
     override fun addLifecycleObserver(observer: AccountsLifecycleObserver) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (observer is LifecycleObserver) {
+            lifecycle.addObserver(observer as LifecycleObserver)
+        }
     }
 
     override fun getLiveAccounts(): CustomLiveData<MutableList<Account>> {
