@@ -48,7 +48,8 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
 
     }
 
-    override fun showDataInMainView(accounts: MutableList<Account>){
+    override fun showDataInMainView(accounts: MutableList<Account>?){
+        accounts?: return
         val filteredAccounts: MutableList<Account> = mutableListOf()
         when(mView.getSelectedType()){
             AmarisConstants.Type.ALL->{

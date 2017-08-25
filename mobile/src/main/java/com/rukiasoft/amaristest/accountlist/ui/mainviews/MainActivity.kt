@@ -1,29 +1,29 @@
 package com.rukiasoft.amaristest.accountlist.ui.mainviews
 
+import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.ViewModelProviders
+import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.rukiasoft.amaristest.AmarisApplication
 import com.rukiasoft.amaristest.R
 import com.rukiasoft.amaristest.accountlist.presenters.AccountsPresenter
 import com.rukiasoft.amaristest.accountlist.ui.adapters.AccountsAdapter
 import com.rukiasoft.amaristest.accountlist.ui.lifecycleobservers.AccountsLifecycleObserver
 import com.rukiasoft.amaristest.accountlist.ui.viewmodels.AccountsViewModel
+import com.rukiasoft.amaristest.databinding.ActivityMainBinding
+import com.rukiasoft.amaristest.dependencyInjection.components.AmarisTestComponent
 import com.rukiasoft.amaristest.dependencyInjection.modules.AccountsModule
 import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.model.CustomLiveData
+import com.rukiasoft.amaristest.utils.AmarisConstants
 import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import com.rukiasoft.newrukiapics.ui.activities.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
-import android.arch.lifecycle.LifecycleObserver
-import android.databinding.DataBindingUtil
-import android.support.v7.widget.RecyclerView
-import com.rukiasoft.amaristest.databinding.ActivityMainBinding
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.widget.Switch
-import com.rukiasoft.amaristest.utils.AmarisConstants
 
 
 class MainActivity : BaseActivity(), AccountsView {
@@ -47,9 +47,13 @@ class MainActivity : BaseActivity(), AccountsView {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_all_accounts -> {
+                ViewModelProviders.of(this).get(AccountsViewModel::class.java).lastSelectedType = AmarisConstants.Type.ALL
+                presenter.showDataInMainView(getLiveAccounts().getLivedataValue())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_visible_accounts -> {
+                ViewModelProviders.of(this).get(AccountsViewModel::class.java).lastSelectedType = AmarisConstants.Type.VISIBLE
+                presenter.showDataInMainView(getLiveAccounts().getLivedataValue())
                 return@OnNavigationItemSelectedListener true
             }
         }

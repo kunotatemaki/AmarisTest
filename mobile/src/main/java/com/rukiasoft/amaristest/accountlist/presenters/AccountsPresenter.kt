@@ -12,5 +12,5 @@ interface AccountsPresenter {
 
     fun getResourceManager(): ResourcesManager
     fun accountClicked(account: Account)
-    fun showDataInMainView(accounts: MutableList<Account>)
+    fun showDataInMainView(accounts: MutableList<Account>?)
 }

@@ -10,6 +10,6 @@ import com.rukiasoft.amaristest.utils.AmarisConstants
  * Created by Roll on 24/8/17.
  */
 class AccountsViewModel: ViewModel() {
-    var lastSelectedType: AmarisConstants.Type = AmarisConstants.Type.VISIBLE
+    var lastSelectedType: AmarisConstants.Type = AmarisConstants.Type.ALL
     var listOfAccounts: CustomLiveData<MutableList<Account>> = AccountsLiveData()
 }
