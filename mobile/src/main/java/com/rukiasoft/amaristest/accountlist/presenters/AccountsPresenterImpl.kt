@@ -8,6 +8,7 @@ import com.rukiasoft.amaristest.resources.ResourcesManager
 import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import javax.inject.Inject
 
+
 /**
  * Created by Roll on 24/8/17.
  */
@@ -15,17 +16,25 @@ import javax.inject.Inject
 class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : AccountsPresenter, LivedataObserver {
 
     @Inject
-    protected lateinit var resourcesManager: ResourcesManager
+    lateinit var resourcesManager: ResourcesManager
 
     @Inject
-    protected lateinit var log: LoggerHelper
+    lateinit var log: LoggerHelper
 
     override fun loadAccounts() {
-        log.d(this, "load accounts")
-        val accountList = resourcesManager.loadAccounts()
-        log.d(this, "set data in observable")
-        mView.getLiveAccounts().setLivedataValue(accountList)
-        log.d(this, "metido")
+        //check if there is data in cache
+        val accounts = mView.getLiveAccounts().getLivedataValue()
+        if (accounts != null && !accounts.isEmpty()) {
+            //cached data
+            mView.setAccountsInView(accounts)
+        } else {
+            log.d(this, "load accounts")
+            val accountList = resourcesManager.loadAccounts()
+            log.d(this, "set data in observable")
+            mView.getLiveAccounts().setLivedataValue(accountList)
+            log.d(this, "metido")
+        }
+
     }
 
     //region LIVEDATA OBSERVER INTERFACE
