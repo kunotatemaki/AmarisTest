@@ -26,7 +26,7 @@ class ResourcesManagerImplAndroid @Inject constructor(): ResourcesManager {
         return context.getString(resId)
     }
 
-    override fun loadAccounts(): List<Account> {
+    override fun loadAccounts(): MutableList<Account> {
         log.d(this, "leo las cuentas desde la clase resources")
         val jsonString = loadJSONFromAsset()
         return getAccountsFromJSON(jsonString)

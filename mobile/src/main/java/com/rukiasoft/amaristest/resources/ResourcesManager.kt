@@ -7,7 +7,7 @@ import com.rukiasoft.amaristest.model.Account
  */
 interface ResourcesManager {
 
-    fun loadAccounts(): List<Account>
+    fun loadAccounts(): MutableList<Account>
 
     fun getString(resId: Int): String
 

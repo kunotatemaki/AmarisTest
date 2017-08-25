@@ -10,7 +10,7 @@ import javax.inject.Inject
  * Created by Roll on 24/8/17.
  */
 @CustomScopes.ActivityScope
-class AccountsPresenterImpl @Inject constructor(mView: AccountsView): AccountsPresenter {
+class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : AccountsPresenter {
 
     @Inject
     protected lateinit var resourcesManager: ResourcesManager
@@ -19,9 +19,11 @@ class AccountsPresenterImpl @Inject constructor(mView: AccountsView): AccountsPr
     protected lateinit var log: LoggerHelper
 
     override fun loadAccounts() {
-        log.d(this, "leo las cuentas")
+        log.d(this, "load accounts")
         val accountList = resourcesManager.loadAccounts()
-        accountList.forEach {  }
+        log.d(this, "set data in observable")
+        mView.getLiveAccounts().setLivedataValue(accountList)
+        log.d(this, "metido")
     }
 
 }

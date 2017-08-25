@@ -1,5 +1,6 @@
 package com.rukiasoft.amaristest.accountlist.ui.mainviews
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import com.rukiasoft.amaristest.AmarisApplication
@@ -7,6 +8,7 @@ import com.rukiasoft.amaristest.R
 import com.rukiasoft.amaristest.accountlist.presenters.AccountsPresenter
 import com.rukiasoft.amaristest.accountlist.ui.adapters.AccountsAdapter
 import com.rukiasoft.amaristest.accountlist.ui.lifecycleobservers.AccountsLifecycleObserver
+import com.rukiasoft.amaristest.accountlist.ui.viewmodels.AccountsViewModel
 import com.rukiasoft.amaristest.dependencyInjection.modules.AccountsModule
 import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.model.CustomLiveData
@@ -62,7 +64,7 @@ class MainActivity : BaseActivity(), AccountsView {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getLiveAccounts(): CustomLiveData<List<Account>> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getLiveAccounts(): CustomLiveData<MutableList<Account>> {
+        return ViewModelProviders.of(this).get(AccountsViewModel::class.java).listOfAccounts
     }
 }

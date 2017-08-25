@@ -15,6 +15,6 @@ interface AccountsView {
 
     fun addLifecycleObserver(observer: AccountsLifecycleObserver)
 
-    fun getLiveAccounts(): CustomLiveData<List<Account>>
+    fun getLiveAccounts(): CustomLiveData<MutableList<Account>>
 
 }
