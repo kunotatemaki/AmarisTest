@@ -5,17 +5,18 @@ import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.rukiasoft.amaristest.AmarisApplication
+import com.rukiasoft.amaristest.BR
 import com.rukiasoft.amaristest.R
 import com.rukiasoft.amaristest.accountlist.presenters.AccountsPresenter
 import com.rukiasoft.amaristest.accountlist.ui.adapters.AccountsAdapter
 import com.rukiasoft.amaristest.accountlist.ui.lifecycleobservers.AccountsLifecycleObserver
 import com.rukiasoft.amaristest.accountlist.ui.viewmodels.AccountsViewModel
 import com.rukiasoft.amaristest.databinding.ActivityMainBinding
-import com.rukiasoft.amaristest.dependencyInjection.components.AmarisTestComponent
 import com.rukiasoft.amaristest.dependencyInjection.modules.AccountsModule
 import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.model.CustomLiveData
@@ -104,5 +105,18 @@ class MainActivity : BaseActivity(), AccountsView {
 
     override fun getSelectedType(): AmarisConstants.Type {
         return ViewModelProviders.of(this).get(AccountsViewModel::class.java).lastSelectedType
+    }
+
+    override fun showAccountDetails(account: Account) {
+        /*val builder = AlertDialog.Builder(this)
+        val detailsBinding = PicDetailsBinding.inflate(layoutInflater)
+        detailsBinding.setVariable(BR.account, account)
+        builder.setView(detailsBinding.root)
+                .setNegativeButton(getString(R.string.close), { dialog, _ ->
+                    dialog.cancel()
+                })
+        //store reference to dialog
+        val dialog = builder.create()
+        dialog.show()*/
     }
 }

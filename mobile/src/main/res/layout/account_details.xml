@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="com.rukiasoft.amaristest.model.Account"/>
+        <variable
+            name="account"
+            type="Account"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/details_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_title" />
+
+        <TextView
+            android:id="@+id/details_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="nombre de la cuenta"
+            android:text="@{account.account.accountName}"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toTopOf="@+id/details_name"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_name"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_name"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/details_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balance"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_name" />
+
+        <TextView
+            android:id="@+id/details_balance_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10000€"
+            android:text="@{account.account.accountBalanceInCents}"
+            app:layout_constraintTop_toTopOf="@+id/details_balance"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_balance"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_balance"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/details_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/currency_name"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_balance"
+            />
+
+        <TextView
+            android:id="@+id/details_currency_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="EUR"
+            android:text="@{account.account.accountCurrency}"
+            app:layout_constraintTop_toTopOf="@+id/details_taken"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_taken"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintLeft_toRightOf="@+id/details_taken"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/details_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/id"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_currency" />
+
+        <TextView
+            android:id="@+id/details_id_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="id de la cuenta"
+            android:text="@{account.account.accountId}"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toTopOf="@+id/details_id"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_id"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_id"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/details_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/number"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_id" />
+
+        <TextView
+            android:id="@+id/details_number_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="numero de cuenta"
+            android:text="@{account.account.accountNumber}"
+            app:layout_constraintTop_toTopOf="@+id/details_number"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_number"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_number"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/details_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_number"
+            />
+
+        <TextView
+            android:id="@+id/details_type_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="2017/07/08 taken"
+            android:text="@{account.account.accountType}"
+            app:layout_constraintTop_toTopOf="@+id/details_type"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_type"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintLeft_toRightOf="@+id/details_type"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/details_alias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alias"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_type" />
+
+        <TextView
+            android:id="@+id/details_alias_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Alias de la cuenta"
+            android:text="@{account.alias}"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toTopOf="@+id/details_alias"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_alias"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_alias"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/details_iban"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/iban"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_alias" />
+
+        <TextView
+            android:id="@+id/details_iban_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="iban de la cuenta"
+            android:text="@{account.iban}"
+            app:layout_constraintTop_toTopOf="@+id/details_iban"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_iban"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_iban"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/details_linked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/linked"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_iban"
+            />
+
+        <TextView
+            android:id="@+id/details_linked_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="cuenta linkada"
+            android:text="@{account.linkedAccountId}"
+            app:layout_constraintTop_toTopOf="@+id/details_linked"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_linked"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintLeft_toRightOf="@+id/details_linked"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/details_prod_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prod_name"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_linked" />
+
+        <TextView
+            android:id="@+id/details_prod_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="nombre de producto"
+            android:text="@{account.productName}"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toTopOf="@+id/details_prod_name"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_prod_name"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_prod_name"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/details_prod_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prod_type"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_prod_name" />
+
+        <TextView
+            android:id="@+id/details_prod_type_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="tipo de producto"
+            android:text="@{account.productType}"
+            app:layout_constraintTop_toTopOf="@+id/details_prod_type"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_prod_type"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_prod_type"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/details_savings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/savings"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_prod_type"
+            />
+
+        <TextView
+            android:id="@+id/details_savings_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="ahorros alcanzados"
+            android:text="@{account.savingsTargetReached}"
+            app:layout_constraintTop_toTopOf="@+id/details_savings"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_savings"
+            android:layout_marginBottom="0dp"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintLeft_toRightOf="@+id/details_savings"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/details_target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/target"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginEnd="@dimen/separator_margin"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/separator_margin"
+            app:layout_constraintTop_toBottomOf="@+id/details_savings" />
+
+        <TextView
+            android:id="@+id/details_target_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="objetivo"
+            android:text="@{account.targetAmountInCents}"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            app:layout_constraintTop_toTopOf="@+id/details_target"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/details_target"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/details_target"
+            android:layout_marginStart="@dimen/separator_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -18,4 +18,5 @@ interface AccountsView {
     fun getLiveAccounts(): CustomLiveData<MutableList<Account>>
 
     fun getSelectedType(): AmarisConstants.Type
+    fun showAccountDetails(account: Account)
 }
