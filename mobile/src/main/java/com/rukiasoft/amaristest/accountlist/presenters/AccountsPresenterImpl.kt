@@ -1,6 +1,8 @@
 package com.rukiasoft.amaristest.accountlist.presenters
 
 import com.rukiasoft.amaristest.dependencyInjection.scopes.CustomScopes
+import com.rukiasoft.amaristest.resources.ResourcesManager
+import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import javax.inject.Inject
 
 /**
@@ -9,9 +11,15 @@ import javax.inject.Inject
 @CustomScopes.ActivityScope
 class AccountsPresenterImpl @Inject constructor(): AccountsPresenter {
 
+    @Inject
+    protected lateinit var resourcesManager: ResourcesManager
+
+    @Inject
+    protected lateinit var log: LoggerHelper
 
     override fun loadAccounts() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        log.d(this, "leo las cuentas")
+        resourcesManager.loadAccounts()
     }
 
 }

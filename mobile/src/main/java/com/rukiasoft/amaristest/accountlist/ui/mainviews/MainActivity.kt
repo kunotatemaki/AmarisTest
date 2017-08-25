@@ -50,6 +50,8 @@ class MainActivity : BaseActivity(), AccountsView {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        presenter.loadAccounts()
     }
 
     override fun setAccountsInView(accounts: List<Account>) {
