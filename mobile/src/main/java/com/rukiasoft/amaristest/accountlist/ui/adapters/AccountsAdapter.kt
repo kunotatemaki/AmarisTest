@@ -22,7 +22,6 @@ class AccountsAdapter @Inject constructor(val presenter: AccountsPresenter):
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): AccountsViewHolder {
         val inflater = LayoutInflater.from(parent?.context)
         val binding = DataBindingUtil.inflate<AccountItemBinding>(inflater, R.layout.account_item, parent, false)
-
         return AccountsViewHolder(binding)
     }
 

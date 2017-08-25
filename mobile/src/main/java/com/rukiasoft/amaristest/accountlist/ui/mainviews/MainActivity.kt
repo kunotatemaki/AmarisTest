@@ -22,8 +22,8 @@ import android.support.v7.widget.RecyclerView
 import com.rukiasoft.amaristest.databinding.ActivityMainBinding
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
-
-
+import android.widget.Switch
+import com.rukiasoft.amaristest.utils.AmarisConstants
 
 
 class MainActivity : BaseActivity(), AccountsView {
@@ -84,7 +84,22 @@ class MainActivity : BaseActivity(), AccountsView {
     override fun setAccountsInView(accounts: List<Account>) {
         log.d(this, "pongo las cuentas en la vista")
         adapter.accounts.clear()
-        adapter.accounts.addAll(accounts)
+        val filteredAccounts: MutableList<Account> = mutableListOf()
+        when(getSelectedType()){
+            AmarisConstants.Type.ALL->{
+                log.d(this, "show all")
+                filteredAccounts.addAll(accounts)}
+            AmarisConstants.Type.VISIBLE -> {
+                log.d(this, "show only visibles")
+                accounts.forEach {
+                    if(it.isVisible){
+                        filteredAccounts.add(it)
+                    }
+                }
+            }
+
+        }
+        adapter.accounts.addAll(filteredAccounts)
         adapter.notifyDataSetChanged()
     }
 
@@ -96,5 +111,9 @@ class MainActivity : BaseActivity(), AccountsView {
 
     override fun getLiveAccounts(): CustomLiveData<MutableList<Account>> {
         return ViewModelProviders.of(this).get(AccountsViewModel::class.java).listOfAccounts
+    }
+
+    override fun getSelectedType(): AmarisConstants.Type {
+        return ViewModelProviders.of(this).get(AccountsViewModel::class.java).lastSelectedType
     }
 }

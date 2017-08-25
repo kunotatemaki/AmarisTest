@@ -35,7 +35,7 @@ class Account {
     val iban: String? = null
     @SerializedName("isVisible")
     @Expose
-    val isVisible: Boolean? = null
+    val isVisible: Boolean = true
     @SerializedName("linkedAccountId")
     @Expose
     val linkedAccountId: Int? = null
