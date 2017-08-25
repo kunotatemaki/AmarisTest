@@ -27,6 +27,9 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/vertical_spacing"
         android:paddingBottom="@dimen/vertical_spacing"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
+        android:onClick="@{() -> presenter.accountClicked(account)}"
         >
 
         <TextView

@@ -1,5 +1,6 @@
 package com.rukiasoft.amaristest.accountlist.presenters
 
+import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.resources.ResourcesManager
 
 /**
@@ -10,4 +11,5 @@ interface AccountsPresenter {
     fun loadAccounts()
 
     fun getResourceManager(): ResourcesManager
+    fun accountClicked(account: Account)
 }

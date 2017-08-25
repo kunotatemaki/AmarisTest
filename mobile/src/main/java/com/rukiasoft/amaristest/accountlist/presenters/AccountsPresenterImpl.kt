@@ -7,6 +7,9 @@ import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.resources.ResourcesManager
 import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import javax.inject.Inject
+import android.provider.ContactsContract.DisplayNameSources.NICKNAME
+import android.content.Intent
+import android.view.View
 
 
 /**
@@ -39,6 +42,12 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
 
     override fun getResourceManager(): ResourcesManager{
         return resourcesManager;
+    }
+
+    override fun accountClicked(account: Account) {
+        log.d(this, "he pulsado: " + account.accountBalanceInCents)
+
+
     }
 
     //region LIVEDATA OBSERVER INTERFACE
