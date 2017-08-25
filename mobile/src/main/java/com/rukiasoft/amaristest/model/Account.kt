@@ -17,7 +17,7 @@ class Account {
     val accountCurrency: String? = null
     @SerializedName("accountId")
     @Expose
-    val accountId: Int? = null
+    val accountId: Long? = null
     @SerializedName("accountName")
     @Expose
     val accountName: String? = null

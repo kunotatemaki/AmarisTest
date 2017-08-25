@@ -3,7 +3,7 @@
     <string name="title_all_accounts">All accounts</string>
     <string name="title_visible_accounts">Visible accounts</string>
     <string name="currency">€</string>
-    <string name="currency_name">EUR</string>
+    <string name="currency_name">Currency:</string>
     <string name="name">Name:</string>
     <string name="alias">Alias:</string>
     <string name="iban">Iban:</string>
@@ -13,7 +13,7 @@
     <string name="number">Account Number:</string>
     <string name="type">Account Type:</string>
     <string name="linked">Linked Account:</string>
-    <string name="prod_name">Product name</string>
+    <string name="prod_name">Product name:</string>
     <string name="prod_type">Product type:</string>
     <string name="savings">Savings reached:</string>
     <string name="target">Target in cents:</string>

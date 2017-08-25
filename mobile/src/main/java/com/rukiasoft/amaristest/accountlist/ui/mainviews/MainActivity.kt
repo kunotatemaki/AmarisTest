@@ -16,6 +16,7 @@ import com.rukiasoft.amaristest.accountlist.presenters.AccountsPresenter
 import com.rukiasoft.amaristest.accountlist.ui.adapters.AccountsAdapter
 import com.rukiasoft.amaristest.accountlist.ui.lifecycleobservers.AccountsLifecycleObserver
 import com.rukiasoft.amaristest.accountlist.ui.viewmodels.AccountsViewModel
+import com.rukiasoft.amaristest.databinding.AccountDetailsBinding
 import com.rukiasoft.amaristest.databinding.ActivityMainBinding
 import com.rukiasoft.amaristest.dependencyInjection.modules.AccountsModule
 import com.rukiasoft.amaristest.model.Account
@@ -108,8 +109,8 @@ class MainActivity : BaseActivity(), AccountsView {
     }
 
     override fun showAccountDetails(account: Account) {
-        /*val builder = AlertDialog.Builder(this)
-        val detailsBinding = PicDetailsBinding.inflate(layoutInflater)
+        val builder = AlertDialog.Builder(this)
+        val detailsBinding = AccountDetailsBinding.inflate(layoutInflater)
         detailsBinding.setVariable(BR.account, account)
         builder.setView(detailsBinding.root)
                 .setNegativeButton(getString(R.string.close), { dialog, _ ->
@@ -117,6 +118,6 @@ class MainActivity : BaseActivity(), AccountsView {
                 })
         //store reference to dialog
         val dialog = builder.create()
-        dialog.show()*/
+        dialog.show()
     }
 }

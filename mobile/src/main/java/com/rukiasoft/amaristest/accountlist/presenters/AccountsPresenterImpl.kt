@@ -44,7 +44,7 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
 
     override fun accountClicked(account: Account) {
         log.d(this, "he pulsado: " + account.accountBalanceInCents)
-
+        mView.showAccountDetails(account)
 
     }
 
