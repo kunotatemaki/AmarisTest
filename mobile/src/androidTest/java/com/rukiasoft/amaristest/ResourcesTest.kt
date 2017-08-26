@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
 import com.rukiasoft.amaristest.resources.ResourcesManagerImplAndroid
+import com.rukiasoft.amaristest.test.R
 import com.rukiasoft.amaristest.utils.AmarisConstants
 import com.rukiasoft.amaristest.utils.logger.AndroidLogHelperImpl
 import com.rukiasoft.amaristest.utils.logger.LoggerHelper
@@ -25,7 +26,7 @@ class ResourcesTest {
 
     @Before
     fun setUp(){
-        context = InstrumentationRegistry.getTargetContext()
+        context = InstrumentationRegistry.getContext()
         resources = ResourcesManagerImplAndroid(log, context)
     }
 

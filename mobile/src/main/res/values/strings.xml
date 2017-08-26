@@ -18,5 +18,4 @@
     <string name="savings">Savings reached:</string>
     <string name="target">Target in cents:</string>
 
-    <string name="test_string">This string is used to test resources class</string>
 </resources>
