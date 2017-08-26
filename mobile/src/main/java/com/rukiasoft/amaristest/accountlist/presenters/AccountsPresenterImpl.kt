@@ -1,11 +1,13 @@
 package com.rukiasoft.amaristest.accountlist.presenters
 
+import android.support.annotation.VisibleForTesting
 import com.rukiasoft.amaristest.accountlist.ui.livedataobservers.LivedataObserver
 import com.rukiasoft.amaristest.accountlist.ui.mainviews.AccountsView
 import com.rukiasoft.amaristest.dependencyInjection.scopes.CustomScopes
 import com.rukiasoft.amaristest.model.Account
 import com.rukiasoft.amaristest.resources.ResourcesManager
 import com.rukiasoft.amaristest.utils.AmarisConstants
+import com.rukiasoft.amaristest.utils.logger.AndroidLogHelperImpl
 import com.rukiasoft.amaristest.utils.logger.LoggerHelper
 import javax.inject.Inject
 
@@ -14,13 +16,20 @@ import javax.inject.Inject
  * Created by Roll on 24/8/17.
  */
 @CustomScopes.ActivityScope
-class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : AccountsPresenter, LivedataObserver {
+open class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : AccountsPresenter, LivedataObserver {
 
     @Inject
     lateinit var resourcesManager: ResourcesManager
 
     @Inject
     lateinit var log: LoggerHelper
+
+    @VisibleForTesting
+    constructor(resourcesManager: ResourcesManager, log: AndroidLogHelperImpl, mView: AccountsView) : this(mView) {
+        this.resourcesManager = resourcesManager
+        this.log = log
+
+    }
 
     override fun loadAccounts() {
         //check if there is data in cache
@@ -50,13 +59,18 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
 
     override fun showDataInMainView(accounts: MutableList<Account>?){
         accounts?: return
+        val filteredAccounts: MutableList<Account> = getFilteredAccounts(accounts)
+        mView.setAccountsInView(filteredAccounts)
+    }
+
+    fun getFilteredAccounts(accounts: MutableList<Account>): MutableList<Account>{
         val filteredAccounts: MutableList<Account> = mutableListOf()
         when(mView.getSelectedType()){
             AmarisConstants.Type.ALL->{
                 log.d(this, "show all")
                 filteredAccounts.addAll(accounts)}
             AmarisConstants.Type.VISIBLE -> {
-                log.d(this, "show only visibles")
+                log.d(this, "show only visible accounts")
                 accounts.forEach {
                     if(it.isVisible){
                         filteredAccounts.add(it)
@@ -64,7 +78,7 @@ class AccountsPresenterImpl @Inject constructor(val mView: AccountsView) : Accou
                 }
             }
         }
-        mView.setAccountsInView(filteredAccounts)
+        return filteredAccounts
     }
 
     //region LIVEDATA OBSERVER INTERFACE

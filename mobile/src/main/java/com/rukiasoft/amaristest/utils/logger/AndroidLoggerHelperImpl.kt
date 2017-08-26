@@ -10,7 +10,7 @@ import javax.inject.Singleton
  * Created by Roll on 24/8/17.
  */
 @Singleton
-class AndroidLogHelperImpl @Inject
+open class AndroidLogHelperImpl @Inject
 internal constructor() : LoggerHelper {
 
 

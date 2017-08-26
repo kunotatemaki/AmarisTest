@@ -1,5 +1,6 @@
 package com.rukiasoft.amaristest.model
 
+import android.support.annotation.VisibleForTesting
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -20,7 +21,7 @@ class Account {
     val accountId: Long? = null
     @SerializedName("accountName")
     @Expose
-    val accountName: String? = null
+    var accountName: String? = null
     @SerializedName("accountNumber")
     @Expose
     val accountNumber: String? = null
@@ -35,7 +36,7 @@ class Account {
     val iban: String? = null
     @SerializedName("isVisible")
     @Expose
-    val isVisible: Boolean = true
+    var isVisible: Boolean = true
     @SerializedName("linkedAccountId")
     @Expose
     val linkedAccountId: Int? = null
@@ -52,5 +53,9 @@ class Account {
     @Expose
     val targetAmountInCents: Int? = null
 
-
+    @VisibleForTesting
+    constructor(accountName: String, isVisible: Boolean){
+        this.accountName = accountName
+        this.isVisible = isVisible
+    }
 }
