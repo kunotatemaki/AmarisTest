@@ -10,4 +10,7 @@ object AmarisConstants {
         VISIBLE(2)
     }
 
+    val ACCOUNTS_FILE_NAME: String = "accounts.json"
+    val ACCOUNTS_FILE_NAME_TEST: String = "accounts_test.json"
+
 }
